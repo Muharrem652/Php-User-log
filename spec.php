@@ -1,4 +1,12 @@
 <?php
+session_start();
+
+// Oturum süresi dolmuşsa veya oturum başlatılmamışsa giriş sayfasına yönlendir
+if (!isset($_SESSION["giris"]) || $_SESSION["giris"] !== true) {
+    header("Location: giris.php");
+    exit();
+}
+
 $klasor = $_SERVER['DOCUMENT_ROOT'] . '/logs';
 
 // Sayfa başlangıcında, mevcut seçili log dosyasını kontrol edin ve bir cookie'ye kaydedin
