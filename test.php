@@ -1,3 +1,7 @@
+<?php
+require 'log.php';
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +13,3 @@
     </div>
 </body>
 </html>
-<?php
-require 'izleme.php';
-?>
