@@ -43,4 +43,7 @@ file_put_contents($logDosya, $siraNumarasi . " - " . $user_id . " - "  . date('H
 // Kullanıcıya önceki ve şu anki sayfa bilgisini gösterin (isteğe bağlı)
 echo "Önceki Sayfa: " . $previous_page . "<br>";
 echo "Şu Anki Sayfa: " . $current_page;
+
+// Discord Webhook URL'si
+require 'discordwebhook.php'
 ?>
