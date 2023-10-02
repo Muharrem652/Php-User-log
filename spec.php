@@ -91,7 +91,7 @@ if (isset($seciliDosya) && $seciliDosya !== '') {
 
         echo '<h2>Dosya İçeriği: ' . basename($seciliDosya) . '</h2>';
         echo '<table>';
-        echo "<tr><th>Satır</th><th>Uuid</th><th>Saat</th><th>İp Adresi</th><th>Eski Sayfa</th><th>Yeni Sayfa</th><th></th></tr>";
+        echo "<tr><th>Satır</th><th>Uuid</th><th>Saat</th><th>İp Adresi</th><th>Eski Sayfa</th><th>Yeni Sayfa</th><th>Ülke</th><th></th></tr>";
 
         $goruntulenecekSatirlar = [];
 
@@ -114,6 +114,7 @@ if (isset($seciliDosya) && $seciliDosya !== '') {
                 $ip = $entryData[3];
                 $previousPage = $entryData[4];
                 $currentPage = $entryData[5];
+                $region = $entryData[6];
 
                 // Benzersiz kullanıcı kontrolü
                 $isUnique = true;
@@ -163,7 +164,7 @@ if (isset($seciliDosya) && $seciliDosya !== '') {
             $ip = $entryData[3];
             $previousPage = $entryData[4];
             $currentPage = $entryData[5];
-
+            $region = $entryData[6];
             echo "<tr>";
             echo "<td style='padding-right: 15px;'>$line</td>";
             echo "<td style='padding-right: 15px;'>$uuid</td>";
@@ -171,6 +172,8 @@ if (isset($seciliDosya) && $seciliDosya !== '') {
             echo "<td style='padding-right: 15px;'>$ip</td>";
             echo "<td style='padding-right: 15px;'>$previousPage</td>";
             echo "<td style='padding-right: 15px;'>$currentPage</td>";
+            echo "<td style='padding-right: 15px;'>$region</td>";
+
             echo "<td><a href='https://check-host.net/ip-info?host=$ip' target='_blank'>IP Detayları</a></td>";
             echo "</tr>";
         }
