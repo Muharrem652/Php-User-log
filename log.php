@@ -28,6 +28,16 @@ $_SESSION['current_page'] = $current_page;
 // Ziyaretçinin IP adresini al
 $ip = $_SERVER['REMOTE_ADDR'];
 
+$access_key = 'key';
+
+$json = file_get_contents("https://ipinfo.io/{$ip_address}?token={$access_key}");
+$details = json_decode($json);
+
+$city = $details->city;
+$region = $details->region;
+$country = $details->country;
+$location = "{$city}, {$region}, {$country}";
+
 // Ziyaretçinin tarihini al
 $tarih = date('d.m.Y');
 
@@ -38,11 +48,11 @@ $logDosya = 'logs/' . $tarih . '_ip_log.txt';
 $siraNumarasi = file_exists($logDosya) ? count(file($logDosya)) + 1 : 1;
 
 // IP adresi, benzersiz kullanıcı ID, önceki sayfa ve şu anki sayfa bilgisini dosyaya ekle
-file_put_contents($logDosya, $siraNumarasi . " - " . $user_id . " - "  . date('H:i:s') . " - " . $ip . " - " . $previous_page . " - " . $current_page . PHP_EOL, FILE_APPEND);
+file_put_contents($logDosya, $siraNumarasi . " - " . $user_id . " - "  . date('H:i:s') . " - " . $ip . " - " . $previous_page . " - " . $current_page . " - " . $location . PHP_EOL, FILE_APPEND);
 
 // Kullanıcıya önceki ve şu anki sayfa bilgisini gösterin (isteğe bağlı)
-echo "Önceki Sayfa: " . $previous_page . "<br>";
-echo "Şu Anki Sayfa: " . $current_page;
+//echo "Önceki Sayfa: " . $previous_page . "<br>";
+//echo "Şu Anki Sayfa: " . $current_page;
 
 // Discord Webhook URL'si
 require 'discordwebhook.php'
