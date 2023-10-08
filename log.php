@@ -30,7 +30,7 @@ $ip = $_SERVER['REMOTE_ADDR'];
 
 $access_key = 'key';
 
-$json = file_get_contents("https://ipinfo.io/{$ip_address}?token={$access_key}");
+$json = file_get_contents("https://ipinfo.io/{$ip}?token={$access_key}");
 $details = json_decode($json);
 
 $city = $details->city;
